@@ -11,12 +11,12 @@ services:
       - POSTGRES_DB=kittipong
     volumes:
       - ./data:/var/lib/postgresql/data
-    admin:
-      image: dpage/pgadmin4
-      container_name: 69-s3-admin
-      ports:
+  admin:
+    image: dpage/pgadmin4
+    container_name: 69-s3-admin
+    ports:
       
-        - 8083:80
-      environment:
-        - PGADMIN_DEFAULT_EMAIL=kittipong-kum@rmutp.ac.th
-        - PGADMIN_DEFAULT_PASSWORD=ki@5611
+      - 8083:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=kittipong-kum@rmutp.ac.th
+      - PGADMIN_DEFAULT_PASSWORD=ki@5611
