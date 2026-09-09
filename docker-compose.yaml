@@ -20,3 +20,15 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=kittipong-kum@rmutp.ac.th
       - PGADMIN_DEFAULT_PASSWORD=ki@5611
+  app:
+    image: prawee/strapi
+    container_name: 69-s3-app
+    ports:
+      - 8080:1337
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_NAME=kittipong
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=kittipong
+      - DATABASE_PASSWORD=ki@5611
