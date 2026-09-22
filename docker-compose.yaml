@@ -3,28 +3,28 @@ services:
     image: postgres:16-alpine
     container_name: 69-s3-db
     ports:
-      
-      - 54327:5432
+      - "54327:5432"
     environment:
       - POSTGRES_PASSWORD=ki@5611
       - POSTGRES_USER=kittipong
       - POSTGRES_DB=kittipong
     volumes:
       - ./data:/var/lib/postgresql/data
+
   admin:
     image: dpage/pgadmin4
     container_name: 69-s3-admin
     ports:
-      
-      - 8083:80
+      - "8083:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=kittipong-kum@rmutp.ac.th
       - PGADMIN_DEFAULT_PASSWORD=ki@5611
+
   app:
     image: prawee/strapi
     container_name: 69-s3-app
     ports:
-      - 8080:1337
+      - "8080:1337"
     environment:
       - DATABASE_CLIENT=postgres
       - DATABASE_NAME=kittipong
@@ -32,3 +32,8 @@ services:
       - DATABASE_PORT=5432
       - DATABASE_USERNAME=kittipong
       - DATABASE_PASSWORD=ki@5611
+    depends_on:
+      - db
+
+volumes:
+  data-postgres:
