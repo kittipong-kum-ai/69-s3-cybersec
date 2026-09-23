@@ -21,7 +21,9 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
 
   app:
-    image: prawee/strapi
+    build:
+      context: ./app
+    image: 69-s3-app:local
     container_name: 69-s3-app
     ports:
       - "8080:1337"
@@ -37,6 +39,13 @@ services:
       - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
       - JWT_SECRET=${JWT_SECRET}
       - TRANSFER_TOKEN_SALT=${TRANSFER_TOKEN_SALT}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_FROM=${SMTP_FROM}
+    volumes:
+      - ./config/plugins.js:/opt/app/config/plugins.js:ro
     depends_on:
       - db
 
